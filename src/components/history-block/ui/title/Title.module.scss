@@ -1,0 +1,59 @@
+@use '@styles/variables' as *;
+
+.title{
+    display: flex;
+    gap: 4em;
+    margin-top: 170px;
+}
+
+.vertical-line{
+    width: 5px;
+    height: 120px;
+    background: linear-gradient(180deg, $primary_color1 0%, $primary_color2 100%);
+}
+
+.text{
+    margin: 0;
+    font-size: 56px;
+    width: 400px;
+    line-height: 1em;
+    color: $line_color;
+}
+
+
+@media (max-width: 1150px) {
+    .vertical-line{
+        height: 100px;
+    }
+    .text{
+        font-size: 46px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 950px) {
+    .title{
+        margin-top: 150px;
+    }
+    .vertical-line{
+        height: 80px;
+    }
+    .text{
+        font-size: 40px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 720px) {
+    .title{
+        margin-top: 60px;
+        margin-left: 2em;
+    }
+    .vertical-line{
+        display: none;
+    }
+    .text{
+        font-size: clamp(20px, 5vw, 30px);
+        width: clamp(130px, 5vw, 200px);
+    }
+}

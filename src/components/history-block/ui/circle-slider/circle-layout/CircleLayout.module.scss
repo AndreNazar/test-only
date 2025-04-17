@@ -1,0 +1,89 @@
+@use '@styles/variables' as *;
+
+@mixin activePoint(){
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-width: 1px;
+    font-size: 20px;
+}
+
+.circle-layout{
+    top: 0;
+    width: 100%;
+    z-index: 0;
+    .circle{
+        position: absolute;
+        top: calc(50% - 265px);
+        left: calc(50% - 265px);
+        width: 530px;
+        height: 530px;
+        border: 1px solid $line_color_light;
+        border-radius: 50%;
+        &-point{
+            position: absolute;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            color: $line_color;
+            width: 6px;
+            height: 6px;
+            background-color: $line_color;
+            border: 0px solid $line_color;
+            font-size: 0px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: 
+                width .2s,
+                height .2s,
+                background-color .2s,
+                font-size .2s;
+            &:hover{
+                @include activePoint();
+            }
+            &--active{
+                @include activePoint();
+            }
+            
+            &::before{
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                transform: translate(-50%, -50%);
+                transition: all .2s;
+            }
+
+        }
+        &-title{
+            position: absolute;
+            left: 80px;
+            font-family: "PTSans-Bold";
+            font-size: 20px;
+            color: $line_color;
+            opacity: 0;
+            scale: 0;
+            transition: opacity .1s, scale .3s;
+            &--active{
+                opacity: 1;
+                transition: opacity .4s;
+                scale: 1;
+            }
+        }
+    }
+    .horizontal-line{
+    }
+}
+
+
+
+
+@media (max-width: 720px) {
+    .circle-layout{
+        display: none;
+    }
+}
